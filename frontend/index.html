@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RivalScope | AI-анализ конкурентов</title>
+    <link rel="icon" type="image/png" href="/static/assets/logo.png" />
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <aside class="sidebar">
+      <div class="brand">
+        <img src="/static/assets/logo.png" alt="RivalScope logo" />
+        <div>
+          <strong>RivalScope</strong>
+          <span>by NeiroBridge</span>
+        </div>
+      </div>
+      <nav>
+        <button class="nav-item active" data-section="dashboard">Дашборд</button>
+        <button class="nav-item" data-section="site">Анализ сайта</button>
+        <button class="nav-item" data-section="text">Текст</button>
+        <button class="nav-item" data-section="image">Изображение</button>
+        <button class="nav-item" data-section="compare">Сравнение</button>
+        <button class="nav-item" data-section="history">История</button>
+      </nav>
+    </aside>
+
+    <main class="app">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">Панель конкурентной разведки</p>
+          <h1>AI-анализатор рынка конкурентов</h1>
+          <p>
+            Анализируйте сайты, тексты, баннеры и позиционирование конкурентов.
+            Получайте оценочную карту, SWOT и практический план улучшений.
+          </p>
+        </div>
+        <div class="status-card">
+          <span id="healthStatus">Проверка API...</span>
+          <strong>ProxyAPI + GPT-4o</strong>
+        </div>
+      </header>
+
+      <section class="context-panel">
+        <label>
+          Ниша
+          <select id="niche">
+            <option>AI-автоматизация бизнеса</option>
+            <option>n8n / no-code автоматизация</option>
+            <option>AI-агенты и чат-боты</option>
+            <option>дизайн-студия</option>
+            <option>motion / animation studio</option>
+            <option>e-commerce</option>
+            <option>маркетинговое агентство</option>
+            <option>SaaS / IT-сервис</option>
+            <option>другое</option>
+          </select>
+        </label>
+        <label>
+          Своя ниша
+          <input id="customNiche" placeholder="Например: AI-интегратор для SMB" />
+        </label>
+        <label>
+          Мой бренд
+          <input id="ownBrand" value="NeiroBridge" />
+        </label>
+        <label>
+          Сайт моего бренда
+          <input id="ownSite" value="https://neirobridge.ru" />
+        </label>
+        <label>
+          Целевая аудитория
+          <input id="targetAudience" placeholder="Малый и средний бизнес" />
+        </label>
+      </section>
+
+      <section class="section active" id="dashboard">
+        <div class="panel">
+          <div class="panel-title">
+            <div>
+              <h2>Бренд и конкуренты</h2>
+              <p class="muted">
+                Этот блок нужен, чтобы пользователь сам собрал набор для сравнения:
+                свой бренд и 2-5 конкурентов. Демо-сайты можно удалить или заменить.
+              </p>
+            </div>
+          </div>
+          <div class="form-row competitor-form">
+            <input id="competitorName" placeholder="Название конкурента" />
+            <input id="competitorUrl" placeholder="https://site.ru" />
+            <input id="competitorNote" placeholder="Краткое позиционирование" />
+            <button id="addCompetitorBtn">Добавить</button>
+          </div>
+        </div>
+        <div class="grid cards" id="competitorCards"></div>
+        <div class="panel">
+          <h2>Как читать результат</h2>
+          <p class="muted">
+            Пайплайн показывает этапы работы: от контекста ниши до плана действий.
+            Это подсказка для пользователя, почему анализ может занять время и из каких
+            шагов складывается итоговый отчет.
+          </p>
+          <div class="pipeline">
+            <span>1. Контекст ниши</span>
+            <span>2. Сбор данных</span>
+            <span>3. AI-анализ</span>
+            <span>4. Оценочная карта</span>
+            <span>5. План действий</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="site">
+        <div class="panel">
+          <h2>Анализ сайта конкурента</h2>
+          <div class="form-row">
+            <input id="siteUrl" value="https://neirobridge.ru" />
+            <button id="analyzeSiteBtn">Проанализировать сайт</button>
+          </div>
+          <label class="check">
+            <input id="useSelenium" type="checkbox" checked />
+            Использовать Selenium, скриншот и поведение браузера
+          </label>
+        </div>
+      </section>
+
+      <section class="section" id="text">
+        <div class="panel">
+          <h2>Анализ текста</h2>
+          <textarea id="textInput" placeholder="Вставьте текст конкурента, описание услуги, оффер или блок лендинга"></textarea>
+          <button id="analyzeTextBtn">Проанализировать текст</button>
+        </div>
+      </section>
+
+      <section class="section" id="image">
+        <div class="panel">
+          <h2>Анализ изображения</h2>
+          <input id="imageInput" type="file" accept="image/*" />
+          <button id="analyzeImageBtn">Проанализировать изображение</button>
+        </div>
+      </section>
+
+      <section class="section" id="compare">
+        <div class="panel">
+          <h2>Сравнение конкурентов</h2>
+          <p class="muted">
+            Сравнение использует текущий список из дашборда. Добавьте свой бренд,
+            конкурентов и нажмите кнопку ниже.
+          </p>
+          <button id="compareBtn">Сформировать сравнительный вывод</button>
+        </div>
+      </section>
+
+      <section class="section" id="history">
+        <div class="panel">
+          <div class="panel-title">
+            <h2>История</h2>
+            <button class="secondary" id="refreshHistoryBtn">Обновить</button>
+          </div>
+          <div id="historyList" class="history-list"></div>
+        </div>
+      </section>
+
+      <section class="result-panel hidden" id="resultPanel">
+        <div class="panel-title">
+          <h2>Результат анализа</h2>
+          <span id="loading" class="hidden">Идет анализ...</span>
+        </div>
+        <div id="progressBox" class="progress-box hidden">
+          <div class="progress-meta">
+            <span id="progressText">Подготовка запроса...</span>
+            <strong id="progressValue">0%</strong>
+          </div>
+          <div class="progress-track">
+            <div id="progressBar" class="progress-bar"></div>
+          </div>
+        </div>
+        <div id="result" class="result empty">Запустите любой анализ, чтобы увидеть отчет.</div>
+      </section>
+    </main>
+
+    <script src="/static/app.js"></script>
+  </body>
+</html>

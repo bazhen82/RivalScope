@@ -1,0 +1,19 @@
+.env
+cursor_.md
+Konspekt.docx
+Отчет по ДЗ/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+env/
+history.json
+reports/*.json
+reports/*.md
+!reports/.gitkeep
+desktop/build/
+desktop/dist/
+desktop/*.spec
+*.log
+.DS_Store

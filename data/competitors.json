@@ -1,0 +1,26 @@
+[
+  {
+    "name": "NeiroBridge",
+    "url": "https://neirobridge.ru",
+    "role": "own_brand",
+    "positioning": "AI Automation Studio для малого и среднего бизнеса"
+  },
+  {
+    "name": "AIWORKFLOWS.RU",
+    "url": "https://aiworkflows.ru",
+    "role": "competitor",
+    "positioning": "ИИ-автоматизация, RAG, n8n, CRM и маркетплейсы"
+  },
+  {
+    "name": "4GIC",
+    "url": "https://www.4gic.com",
+    "role": "competitor",
+    "positioning": "AI-агенты, консалтинг, внедрение и ROI для бизнеса"
+  },
+  {
+    "name": "Cortex LAB",
+    "url": "https://cortex-lab.ru",
+    "role": "competitor",
+    "positioning": "n8n workflow automation, чат-боты, voice AI"
+  }
+]
